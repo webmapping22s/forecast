@@ -111,7 +111,15 @@ async function loadWeather(url) {
     `;
 
     marker.setPopupContent(popup).openPopup();
-
-    
 };
 loadWeather("https://api.met.no/weatherapi/locationforecast/2.0/compact?lat=47.267222&lon=11.392778");
+
+// auf Klick auf die Karte reagieren
+map.on("click", function(evt) {
+    //console.log(evt);
+
+    let url = `https://api.met.no/weatherapi/locationforecast/2.0/compact?lat=${evt.latlng.lat}&lon=${evt.latlng.lng}`;
+    //console.log(url);
+
+    loadWeather(url);
+});
