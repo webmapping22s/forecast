@@ -57,13 +57,25 @@ async function loadWind(url) {
     layerControl.addOverlay(overlays.wind, `ECMWF Windvorhersage für ${forecastLabel}`)
 
     L.velocityLayer({
-        data: jsondata
+        data: jsondata,
+        lineWidth: 2,
+        displayOptions: {
+            velocityType: "",
+            directionString: "Windrichtung",
+            speedString: "Windgeschwindigkeit",
+            speedUnit: "k/h",
+            emptyString: "keine Daten vorhanden",
+            position: "bottomright"
+        }
     }).addTo(overlays.wind);
 };
 loadWind("https://geographie.uibk.ac.at/webmapping/ecmwf/data/wind-10u-10v-europe.json");
 
 // Wettervorhersage
 async function loadWeather(url) {
+    const response = await fetch(url);
+    const jsondata = await response.json();
+    //console.log("Jsondaten", jsondata);
 
 };
 loadWeather("https://api.met.no/weatherapi/locationforecast/2.0/compact?lat=47.267222&lon=11.392778");
