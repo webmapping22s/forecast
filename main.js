@@ -106,7 +106,7 @@ async function loadWeather(url) {
             <li>Niederschlag: ${details.precipitation_amount} (mm)</li>
             <li>Relative Luftfeuchtigkeit: ${details.relative_humidity} (%)</li>
             <li>Windrichtung: ${details.wind_from_direction} (°)</li>
-            <li>Windgeschwindigkeit: ${details.wind_speed * 3.6} (km/h)</li>
+            <li>Windgeschwindigkeit: ${(details.wind_speed * 3.6).toFixed(1)} (km/h)</li>
         </ul>
     `;
 
