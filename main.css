@@ -1,0 +1,25 @@
+body {
+    margin: 0;
+    font-family: Verdana, Arial;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    min-height: 5vh;
+    background-color: #0074D9;
+    color: white;
+}
+
+header div {
+    padding: 0.3em;
+}
+
+a {
+    color: white;
+}
+
+#map {
+    height: 95vh;
+    width: 100vw;
+}
