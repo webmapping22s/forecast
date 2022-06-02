@@ -32,7 +32,14 @@ L.control.scale({
 async function loadWind(url) {
     const response = await fetch(url);
     const jsondata = await response.json();
-    console.log(jsondata);
+    console.log("Jsondaten", jsondata);
+    console.log("Zeitpunkt Erstellung", jsondata[0].header.refTime);
+    console.log("Zeitpunkt Vorhersage (+Stunden)", jsondata[0].header.forecastTime);
+
+    let forecastDate = new Date(jsondata[0].header.refTime);
+    console.log("Echtes Datum Erstellung", forecastDate);
+    forecastDate.setHours(forecastDate.getHours() + jsondata[0].header.forecastTime);
+    console.log("Echtes Datum Vorhersage", forecastDate);
 };
 loadWind("https://geographie.uibk.ac.at/webmapping/ecmwf/data/wind-10u-10v-europe.json");
 
