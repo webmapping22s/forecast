@@ -110,6 +110,10 @@ async function loadWeather(url) {
         </ul>
     `;
 
+    // Wettericon
+    let symbol = jsondata.properties.timeseries[0].data.next_1_hours.summary.symbol_code;
+    popup += `<img src="icons/${symbol}.svg" alt="${symbol}" style="width:32px">`;
+
     marker.setPopupContent(popup).openPopup();
 };
 loadWeather("https://api.met.no/weatherapi/locationforecast/2.0/compact?lat=47.267222&lon=11.392778");
