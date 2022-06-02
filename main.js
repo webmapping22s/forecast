@@ -92,7 +92,13 @@ async function loadWeather(url) {
     let details = jsondata.properties.timeseries[0].data.instant.details;
     //console.log("Aktuelle Wetterdaten", details);
 
+    let forecastDate = new Date(jsondata.properties.timeseries[0].time);
+    //console.log(forecastDate);
+    let forecastLabel = formatDate(forecastDate);
+    //console.log(forecastLabel);
+
     let popup = `
+        <strong>Wettervorhersage für ${forecastLabel}</strong>
         <ul>
             <li>Luftdruck: ${details.air_pressure_at_sea_level} (hPa)</li>
             <li>Luftemperatur: ${details.air_temperature} (°C)</li>
@@ -105,5 +111,7 @@ async function loadWeather(url) {
     `;
 
     marker.setPopupContent(popup).openPopup();
+
+    
 };
 loadWeather("https://api.met.no/weatherapi/locationforecast/2.0/compact?lat=47.267222&lon=11.392778");
