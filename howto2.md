@@ -14,7 +14,7 @@ console.log(jsondata);
 
 Wir sehen ein GeoJSON Objekt vom Typ `Point` mit Koordinaten und Seehöhe in `geometry.coordinates`, Metadaten der Attribute in `properties.meta` sowie den eigentlichen Vorhersagedaten im Array `properties.timeseries`. Jeder Eintrag dieses Array besitzt einen Zeitstempel `time`, die vorhergesagten Werte in `data.instant.details` sowie Wetteraussichten mit voraussichtlichen Niederschlagsmengen für die nächsten 1, 6 und 12 Stunden in `data.next_n_hours`
 
-[🔗 COMMIT](https://github.com/webmapping/forecast/commit/74547a8c80208fa5f3f01b0770053ac26860e542) (dieser COMMIT enthält leider auch den, zuvor vergessenen Schritt der Plugin Konfiguration von Leaflet velocity)
+[🔗 COMMIT](https://github.com/webmapping22s/forecast/commit/74547a8c80208fa5f3f01b0770053ac26860e542) (dieser COMMIT enthält leider auch den, zuvor vergessenen Schritt der Plugin Konfiguration von Leaflet velocity)
 
 ### b) Einen Marker mit Popup in einem neuen Overlay vorbereiten
 
@@ -32,11 +32,11 @@ let marker = L.circleMarker([
 ]).bindPopup("Wettervorhersage").addTo(overlays.weather);
 ```
 
-[🔗 COMMIT](https://github.com/webmapping/forecast/commit/06e815b41298c1150d5d8c0c9e7de59502220d00)
+[🔗 COMMIT](https://github.com/webmapping22s/forecast/commit/06e815b41298c1150d5d8c0c9e7de59502220d00)
 
 Leider landeten Marker und Overlay im vorhergehenden Schritt innerhalb der Funktion, weshalb eine Verschiebung des Codes vor die Funktion nötig war
 
-[🔗 COMMIT](https://github.com/webmapping/forecast/commit/c2e3551b2eb32a2717a2087dfe9f13ec4fe5226d)
+[🔗 COMMIT](https://github.com/webmapping22s/forecast/commit/c2e3551b2eb32a2717a2087dfe9f13ec4fe5226d)
 
 Marker und Overlay sind damit verfügbar und können **innerhalb**  der Funktion `loadWeather` befüllt werden
 
@@ -52,7 +52,7 @@ marker.setLatLng([
 ]);
 ```
 
-[🔗 COMMIT](https://github.com/webmapping/forecast/commit/a365629da64119526eb50c2ec626536ff8a2c8bd)
+[🔗 COMMIT](https://github.com/webmapping22s/forecast/commit/a365629da64119526eb50c2ec626536ff8a2c8bd)
 
 ### d) Aktuelle Wetterwere in das Popup schreiben
 
@@ -84,7 +84,7 @@ Den Popupinhalt des Markers können wir schließlich über die Methode [.setPopu
 marker.setPopupContent(popup).openPopup();
 ```
 
-[🔗 COMMIT](https://github.com/webmapping/forecast/commit/28d668e58854f3927dbd3258a6bd7d443576a15b)
+[🔗 COMMIT](https://github.com/webmapping22s/forecast/commit/28d668e58854f3927dbd3258a6bd7d443576a15b)
 
 ### e) Überschrift mit Datum der Wetterwerte beim Popup ergänzen
 
@@ -104,7 +104,7 @@ let popup = `
 `;
 ```
 
-[🔗 COMMIT](https://github.com/webmapping/forecast/commit/c046ea44e736f7089bfea6c5f2f028f1417341c3)
+[🔗 COMMIT](https://github.com/webmapping22s/forecast/commit/c046ea44e736f7089bfea6c5f2f028f1417341c3)
 
 ### f) Wettervorhersage für jeden Ort der Welt implementieren
 
@@ -126,14 +126,14 @@ map.on("click", function(evt) {
 });
 ```
 
-[🔗 COMMIT](https://github.com/webmapping/forecast/commit/2bdada71ea78fb9c8b6bd1f720e876eb5fd94f43)
+[🔗 COMMIT](https://github.com/webmapping22s/forecast/commit/2bdada71ea78fb9c8b6bd1f720e876eb5fd94f43)
 
 
 ### g) Wettersymbole für die nächsten 24 Stunden in 3 Stunden Abständen hinzufügen
 
 Nachdem der `timeseries` Array aus 89 Einträge in Stunden- und 6 Stundenabständen besteht, können wir die Witterungsprognose für die nächsten 24 Stunden in 3 Stundenschritten implementieren. Wir verwenden dazu jeweils das Wettersymbol in `data.next_1_hours.summary.symbol_code`. Für alle dort möglichen Werte stellt uns der [Locationforecast](https://api.met.no/weatherapi/locationforecast/2.0/documentation#Weather_icons) unter dem Link [WeatherIcon 2.0 service](https://api.met.no/weatherapi/weathericon/2.0/documentation) passende Icons zur Verfügung, die wir uns als erstes in einem Unterverzeichnis `icons/` speichern. Wir verwenden die *SVG-Version* da sie skalierbar ist und weniger Speicherplatz benötigt
 
-[🔗 COMMIT](https://github.com/webmapping/forecast/commit/e7450b21a254ea023d8931b6b3e21bfe4727abb9)
+[🔗 COMMIT](https://github.com/webmapping22s/forecast/commit/e7450b21a254ea023d8931b6b3e21bfe4727abb9)
 
 Am Beispiel des ersten Eintrags im `timeseries`Array finden wir den Dateinamen des gewünschten Symbols für die aktuelle Wetterlage im längsten verschachtelten Objekt, das wir bisher kennengelernt haben ;-) Wir speichern den Wert von `jsondata.properties.timeseries[0].data.next_1_hours.summary.symbol_code` in einer Variablen `symbol` und fügen ein &lt;img> Element mit diesem Icon über `+=` zum Popup hinzu. Ein `style`-Attribut verkleinert die Breite des Icons auf `32px` Breite. Den Code schreiben wir direkt vor `marker.setPopupContent()`
 
@@ -143,7 +143,7 @@ Am Beispiel des ersten Eintrags im `timeseries`Array finden wir den Dateinamen d
     popup += `<img src="icons/${symbol}.svg" alt="${symbol}" style="width:32px">`;
 ```
 
-[🔗 COMMIT](https://github.com/webmapping/forecast/commit/f2572802c57c89e01d58aa463a63d1fe24c3f20a)
+[🔗 COMMIT](https://github.com/webmapping22s/forecast/commit/f2572802c57c89e01d58aa463a63d1fe24c3f20a)
 
 Um alle Icons der nächsten 24 Stunden in 3 Stunden Schritten anzuzeigen, können wir in einer klassischen `for-Schleife` mit einer Schleifenvariable `i` den `timeseries` Array abarbeiten. Nach jedem Schleifendurchlauf erhöhen wir die Zählervariable um `3` (Stunden) und beenden die Schleife beim Wert `24`. Wir verpacken also den Code für unser Icon der aktuellen Wetterlage in diese `for`-Schleife und ändern `timeseries[0]` auf `timeseries[i]`
 
@@ -155,7 +155,7 @@ for (let i=0; i <= 24; i+=3) {
 }
 ```
 
-[🔗 COMMIT](https://github.com/webmapping/forecast/commit/6db9c33973b3e707fded27e003c67bb2adf42ba0)
+[🔗 COMMIT](https://github.com/webmapping22s/forecast/commit/6db9c33973b3e707fded27e003c67bb2adf42ba0)
 
 
 Zur besseren Lesbarkeit ergänzen wir bei den Symbolen das jeweilige Datum als Tooltip über ein `title-Attribut`. Das Datum finden wir in `jsondata.properties.timeseries[i].time` - wir formatieren es analog zum Vorhersagezeitpunkt mit der `formatdate` Funktion und setzten es als `title-Attribut` beim Symbolbild ein
@@ -166,7 +166,7 @@ let forecastLabel = formatDate(forecastDate);
 popup += `<img src="icons/${symbol}.svg" title="${forecastLabel}" alt="${symbol}" style="width:32px">`;
 ```
 
-[🔗 COMMIT](https://github.com/webmapping/forecast/commit/e5bbbaf2048f501c82ce37a5ef64e9ed9bae3047)
+[🔗 COMMIT](https://github.com/webmapping22s/forecast/commit/e5bbbaf2048f501c82ce37a5ef64e9ed9bae3047)
 
 **Kosmetik**: die Windgeschwindigkeit kann noch ein `.toFixed(1)` vertragen
 
@@ -174,4 +174,4 @@ popup += `<img src="icons/${symbol}.svg" title="${forecastLabel}" alt="${symbol}
 <li>Windgeschwindigkeit: ${(details.wind_speed * 3.6).toFixed(1)} (km/h)</li>
 ```
 
-[🔗 COMMIT](https://github.com/webmapping/forecast/commit/d04a9020fc5e74bf485ad4f1f8f41c1bbb349fab)
+[🔗 COMMIT](https://github.com/webmapping22s/forecast/commit/d04a9020fc5e74bf485ad4f1f8f41c1bbb349fab)

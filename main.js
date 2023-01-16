@@ -69,7 +69,7 @@ async function loadWind(url) {
         }
     }).addTo(overlays.wind);
 };
-loadWind("https://geographie.uibk.ac.at/webmapping/ecmwf/data/wind-10u-10v-europe.json");
+loadWind("https://geographie.uibk.ac.at/data/ecmwf/data/wind-10u-10v-europe.json");
 
 // Wettervorhersage
 layerControl.addOverlay(overlays.weather, "Wettervorhersage met.no");

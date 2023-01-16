@@ -110,6 +110,6 @@ Details zur Verwendung dieses Tools finden sich im [CDO Tutorial](https://code.m
 
     Wir sehen einen Array bestehend aus zwei Objekten - ein Objekt für die `U-component_of_wind` und ein Objekt für die `V-component_of_wind`, jeweils in 10m Höhe. Aus diesen beiden Attributen kann Leaflet velocity später die Windrichtung und Windgeschwindigkeit berechnen. Jedes dieser Objekte besitzt ein `header`-  und `data`-Attribut. Im `header` stehen die Metadaten zur Erstellung der Vorhersage, die geographische Region für die die Daten gelten soll und die Art der Wind-Komponente. Im `data` Attribut stehen die Werte als Array von West nach Ost und Nord nach Süd.
 
-Der Prozess der Konvertierung wurde am Server der Geographie über ein crontab Script automatisiert. Die aktuelle Vorhersage zur Visualisierung mit Leaflet velocity findet sich unter <https://geographie.uibk.ac.at/webmapping/ecmwf/data/wind-10u-10v-europe.json>
+Der Prozess der Konvertierung wurde am Server der Geographie über ein crontab Script automatisiert. Die aktuelle Vorhersage zur Visualisierung mit Leaflet velocity findet sich unter <https://geographie.uibk.ac.at/data/ecmwf/data/wind-10u-10v-europe.json>
 
-**[Weiter zum HOWTO der Implementierung](https://webmapping.github.io/forecast/howto1)**
+**[Weiter zum HOWTO der Implementierung](https://webmapping22s.github.io/forecast/howto1)**
